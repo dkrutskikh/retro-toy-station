@@ -1,0 +1,56 @@
+{
+    "dart.enableCompletionCommitCharacters": true,
+    "[dart]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.rulers": [
+            120
+        ],
+        "editor.selectionHighlight": true,
+        "editor.defaultFormatter": "Dart-Code.dart-code",
+        "files.insertFinalNewline": true
+    },
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "pubspec.yaml": ".flutter-plugins, .packages, .flutter-plugins-dependencies, .metadata, pubspec.lock",
+        ".gitignore": ".gitattributes, .gitmodules, .gitmessage, .mailmap, .git-blame*",
+        "*.dart": "$(capture).g.dart, $(capture).freezed.dart",
+    },
+    "cSpell.language": "en,ru",
+    "dart.previewFlutterUiGuides": true,
+    "dart.previewFlutterUiGuidesCustomTracking": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": "explicit",
+        "source.organizeImports": "explicit"
+    },
+    "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": true,
+    "markdown.validate.enabled": true,
+    "markdown.preview.typographer": true,
+    "markdown.preview.breaks": true,
+    "markdown.validate.fileLinks.enabled": "error",
+    "markdown.validate.fragmentLinks.enabled": "error",
+    "markdown.validate.referenceLinks.enabled": "error",
+    "markdown.validate.duplicateLinkDefinitions.enabled": "error",
+    "markdown.validate.unusedLinkDefinitions.enabled": "error",
+    "markdown.updateLinksOnFileMove.enabled": "prompt",
+    "markdown.occurrencesHighlight.enabled": true,
+    "markdownlint.config": {
+        "no-inline-html": {
+            "allowed_elements": [
+                "img"
+            ]
+        }
+    },
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor",
+    },
+    "dcm.showNewVersionUpdate": true,
+    "markdown.extension.toc.orderedList": true,
+    "markdown.extension.toc.levels": "2..6",
+    "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+    "cSpell.words": [],
+    "gitlab.showPipelineUpdateNotifications": true,
+    "dart.mcpServer": true
+}
