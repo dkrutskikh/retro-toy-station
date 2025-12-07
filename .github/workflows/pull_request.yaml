@@ -14,17 +14,7 @@ permissions:
   security-events: write
 
 jobs:
-  dispatcher:
-    name: Job dispatcher
-    runs-on: ubuntu-latest
-    timeout-minutes: 10
-    defaults:
-      run:
-        shell: bash
-
   analysis:
     name: Code analysis check
-    needs:
-      - dispatcher
     uses: ./.github/workflows/code_analysis_check.yaml
     secrets: inherit
