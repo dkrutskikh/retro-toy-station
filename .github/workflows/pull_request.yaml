@@ -1,0 +1,20 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  analysis:
+    name: Code analysis check
+    uses: ./.github/workflows/code_analysis_check.yaml
+    secrets: inherit
