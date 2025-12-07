@@ -1,0 +1,32 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "RetroToyStation",
+            "request": "launch",
+            "type": "dart",
+            "program": "lib/main.dart",
+            "args": [
+                "--dart-define",
+                "BRANCH_NAME=`git branch --show-current`",
+                "--dart-define",
+                "BUILD_ENVIRONMENT=staging",
+                "--web-port=50000",
+            ]
+        },
+        {
+            "name": "Golden",
+            "request": "launch",
+            "type": "dart",
+            "codeLens": {
+                "for": [
+                    "run-test",
+                    "run-test-file"
+                ]
+            },
+            "args": [
+                "--update-goldens"
+            ]
+        }
+    ]
+}
