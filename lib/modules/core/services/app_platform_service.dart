@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/foundation.dart';
 
 import '../domain/app_platform.dart';
@@ -19,5 +17,5 @@ AppPlatform _currentPlatform() => switch (defaultTargetPlatform) {
   TargetPlatform.linux => AppPlatform.linux,
   TargetPlatform.macOS => AppPlatform.macOS,
   TargetPlatform.windows => AppPlatform.windows,
-  _ => throw OSError('${Platform.operatingSystem} not supported'),
+  _ => throw Exception('$defaultTargetPlatform not supported'),
 };

@@ -5,7 +5,7 @@ import 'package:logging/logging.dart';
 
 import '../main.dart';
 import '../modules/core/domain/package_info_repository.dart';
-import '../modules/core/services/app_platform_service/app_platform_service.dart';
+import '../modules/core/services/app_platform_service.dart';
 
 Future<void> runApplication() async {
   WidgetsFlutterBinding.ensureInitialized();
