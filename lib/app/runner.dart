@@ -4,6 +4,7 @@ import 'package:flutter/widgets.dart';
 import 'package:logging/logging.dart';
 
 import '../main.dart';
+import '../modules/core/domain/package_info_repository.dart';
 
 Future<void> runApplication() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,6 +17,8 @@ Future<void> runApplication() async {
   }
 
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+
+  await PackageInfoRepository.init();
 
   runApp(const MyApp());
 }
