@@ -5,6 +5,7 @@ import 'package:logging/logging.dart';
 
 import '../main.dart';
 import '../modules/core/domain/package_info_repository.dart';
+import '../modules/core/services/app_platform_service/app_platform_service.dart';
 
 Future<void> runApplication() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,8 @@ Future<void> runApplication() async {
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
   await PackageInfoRepository.init();
+
+  final platform = AppPlatformService().platform;
 
   runApp(const MyApp());
 }
