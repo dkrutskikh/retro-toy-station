@@ -1,5 +1,3 @@
 import 'dart:async';
 
-Future<void> testExecutable(FutureOr<void> Function() testMain) async {
-  return testMain();
-}
+Future<void> testExecutable(FutureOr<void> Function() testMain) async => testMain();

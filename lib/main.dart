@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 import 'app/runner.dart';
@@ -7,6 +8,7 @@ Future<void> main() async {
   await runApplication(const Config());
 }
 
+// ignore_for_file: unreachable_from_main
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
