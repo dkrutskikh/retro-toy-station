@@ -7,7 +7,6 @@
         "yzhang.markdown-all-in-one",
         "DavidAnson.vscode-markdownlint",
         "bierner.markdown-mermaid",
-        "redhat.vscode-yaml",
-        "GitLab.gitlab-workflow"
+        "redhat.vscode-yaml"
     ]
 }

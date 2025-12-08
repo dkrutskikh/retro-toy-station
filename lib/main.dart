@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'app/runner.dart';
+import 'modules/core/environment/models/config.dart';
 
 Future<void> main() async {
-  await runApplication();
+  await runApplication(const Config());
 }
 
 class MyApp extends StatelessWidget {
