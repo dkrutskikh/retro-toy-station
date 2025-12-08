@@ -36,6 +36,6 @@ Future<void> _initAppConfig(AppPlatform platform, Config config) async {
 
   final restoredConfig = await Environment.instance().restoreConfig();
 
-  // Обновляем конфиг, для того чтобы правильно определить environment зависимые вещи на основе Config.host.
+  // Update the config to correctly determine environment-dependent things based on Config.host.
   Environment.instance().config = restoredConfig;
 }

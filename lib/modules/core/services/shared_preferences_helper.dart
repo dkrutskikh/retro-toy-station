@@ -23,7 +23,7 @@ class SharedPreferencesHelper {
       return await _storage.getStringList(key) as T?;
     }
 
-    throw Exception("Does't support type ${T.runtimeType} yet.");
+    throw Exception("Doesn't support type $T yet.");
   }
 
   Future<void> write({required String key, required Object value}) {
@@ -39,7 +39,7 @@ class SharedPreferencesHelper {
       return _storage.setStringList(key, value);
     }
 
-    throw Exception("Does't support type ${value.runtimeType} yet.");
+    throw Exception("Doesn't support type ${value.runtimeType} yet.");
   }
 
   Future<void> delete(String key) => _storage.remove(key);
