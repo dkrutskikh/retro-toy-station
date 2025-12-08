@@ -31,3 +31,6 @@ jobs:
         run: |
           dart pub global activate dependency_validator
           dart pub global run dependency_validator:dependency_validator
+
+      - name: Verify formatting
+        run: dart format --set-exit-if-changed .
