@@ -10,6 +10,7 @@ import '../modules/core/domain/package_info_repository.dart';
 import '../modules/core/environment/environment.dart';
 import '../modules/core/environment/models/config.dart';
 import '../modules/core/services/app_platform_service.dart';
+import '../modules/ui_kit/theme/theme_utils.dart';
 
 Future<void> runApplication(Config config) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,6 +32,8 @@ Future<void> runApplication(Config config) async {
 
   final hmsGmsAvailability = HmsGmsAvailability();
   await hmsGmsAvailability.init(platform);
+
+  await ThemeUtils.osDynamicColor();
 
   runApp(const MyApp());
 }

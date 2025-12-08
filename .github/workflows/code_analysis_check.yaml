@@ -34,3 +34,9 @@ jobs:
 
       - name: Verify formatting
         run: dart format --set-exit-if-changed .
+
+      - name: Analyze project
+        uses: invertase/github-action-dart-analyzer@v1
+        with:
+          fatal-infos: true
+          fatal-warnings: true
