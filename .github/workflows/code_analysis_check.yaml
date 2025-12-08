@@ -36,4 +36,7 @@ jobs:
         run: dart format --set-exit-if-changed .
 
       - name: Analyze project
-        run: flutter analyze --fatal-warnings --fatal-infos .
+        uses: invertase/github-action-dart-analyzer@v1
+        with:
+          fatal-infos: true
+          fatal-warnings: true
