@@ -12,16 +12,3 @@ updates:
       - "dkrutskikh"
     commit-message:
       prefix: "chore: "
-
-  # Maintain dependencies for Dart pub
-  - package-ecosystem: "pub"
-    directory: "/"
-    schedule:
-      interval: "daily"
-    versioning-strategy: increase
-    assignees:
-      - "dependabot"
-    reviewers:
-      - "dkrutskikh"
-    commit-message:
-      prefix: "chore: "

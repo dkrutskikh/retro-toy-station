@@ -1,17 +1,20 @@
-name: "Auto Author Assign"
+name: PR author auto assign
 
 on:
   pull_request:
-    types:
-      - opened
-      - reopened
+    types: [opened, reopened, synchronize, ready_for_review]
 
 permissions:
   pull-requests: write
 
 jobs:
-  assign-author:
+  assign:
+    name: PR author auto assign
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        shell: bash
     steps:
       - uses: toshimaru/auto-author-assign@v2.1.1
         with:

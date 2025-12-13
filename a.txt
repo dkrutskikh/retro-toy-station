@@ -1,0 +1,931 @@
+[1/16] Building CXX object CMakeFiles/toygine.dir/src/platforms/stub/core/assertion_stub.cpp.o
+FAILED: [code=1] CMakeFiles/toygine.dir/src/platforms/stub/core/assertion_stub.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/include -Werror -Weverything -pedantic-errors -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT CMakeFiles/toygine.dir/src/platforms/stub/core/assertion_stub.cpp.o -MF CMakeFiles/toygine.dir/src/platforms/stub/core/assertion_stub.cpp.o.d -o CMakeFiles/toygine.dir/src/platforms/stub/core/assertion_stub.cpp.o -c /Users/dmitry/Development/toygine2/src/platforms/stub/core/assertion_stub.cpp
+In file included from /Users/dmitry/Development/toygine2/src/platforms/stub/core/assertion_stub.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:249:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp":{141:25-141:34}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/platforms/stub/core/assertion_stub.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.inl":{31:51-31:60}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/platforms/stub/core/assertion_stub.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[2/16] Building CXX object CMakeFiles/toygine.dir/src/core/utils.cpp.o
+FAILED: [code=1] CMakeFiles/toygine.dir/src/core/utils.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/include -Werror -Weverything -pedantic-errors -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT CMakeFiles/toygine.dir/src/core/utils.cpp.o -MF CMakeFiles/toygine.dir/src/core/utils.cpp.o.d -o CMakeFiles/toygine.dir/src/core/utils.cpp.o -c /Users/dmitry/Development/toygine2/src/core/utils.cpp
+In file included from /Users/dmitry/Development/toygine2/src/core/utils.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:249:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp":{141:25-141:34}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/core/utils.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.inl":{31:51-31:60}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/core/utils.cpp:28:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[3/16] Building CXX object CMakeFiles/toygine.dir/src/core/hashes.cpp.o
+FAILED: [code=1] CMakeFiles/toygine.dir/src/core/hashes.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/include -Werror -Weverything -pedantic-errors -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT CMakeFiles/toygine.dir/src/core/hashes.cpp.o -MF CMakeFiles/toygine.dir/src/core/hashes.cpp.o.d -o CMakeFiles/toygine.dir/src/core/hashes.cpp.o -c /Users/dmitry/Development/toygine2/src/core/hashes.cpp
+In file included from /Users/dmitry/Development/toygine2/src/core/hashes.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:249:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.hpp":{141:25-141:34}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/core/hashes.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'size_t'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    size_t
+fix-it:"/Users/dmitry/Development/toygine2/include/core/fixed_string.inl":{31:51-31:60}:"size_t"
+/Users/dmitry/Development/toygine2/include/core.hpp:104:12: note: 'size_t' declared here [2]
+  104 |  using std::size_t;
+      |             ^
+In file included from /Users/dmitry/Development/toygine2/src/core/hashes.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/include/core.hpp:260:
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[4/16] Building CXX object test/CMakeFiles/toygine-tests.dir/math/point.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/math/point.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/math/point.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/math/point.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/math/point.test.cpp.o -c /Users/dmitry/Development/toygine2/test/math/point.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/math/point.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/math.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/math/point.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/math.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/math/point.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/math.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[5/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/callbacks_pool.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/callbacks_pool.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/callbacks_pool.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/callbacks_pool.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/callbacks_pool.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/callbacks_pool.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/callbacks_pool.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/callbacks_pool.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/callbacks_pool.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[6/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/hashes.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/hashes.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/hashes.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/hashes.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/hashes.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/hashes.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/hashes.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/hashes.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/hashes.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[7/16] Building CXX object test/CMakeFiles/toygine-tests.dir/app/version.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/app/version.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/app/version.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/app/version.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/app/version.test.cpp.o -c /Users/dmitry/Development/toygine2/test/app/version.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/app/version.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/app.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/app/version.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/app.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/app/version.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/app.hpp:28:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[8/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/utils.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/utils.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/utils.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/utils.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/utils.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/utils.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[9/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/constexpr_utils.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/constexpr_utils.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/constexpr_utils.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/constexpr_utils.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/constexpr_utils.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/constexpr_utils.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/constexpr_utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/constexpr_utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/constexpr_utils.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[10/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/fixed_vector.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/fixed_vector.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/fixed_vector.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/fixed_vector.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/fixed_vector.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/fixed_vector.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_vector.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_vector.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_vector.test.cpp:25:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[11/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/fixed_string.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/fixed_string.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/fixed_string.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/fixed_string.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/fixed_string.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/fixed_string.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_string.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_string.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/fixed_string.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+[12/16] Building CXX object test/CMakeFiles/toygine-tests.dir/core/c_string_view.test.cpp.o
+FAILED: [code=1] test/CMakeFiles/toygine-tests.dir/core/c_string_view.test.cpp.o 
+/usr/bin/c++ -DTOYGINE_VERSION_MAJOR=25 -DTOYGINE_VERSION_MINOR=11 -I/Users/dmitry/Development/toygine2/test/../include -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/.. -I/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-build/generated-includes -I/Users/dmitry/Development/toygine2/include -w    -Wno-missing-prototypes -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-c++20-compat -Wno-missing-include-dirs -Wno-padded -Wno-poison-system-directories -fshow-column -fshow-source-location -fcaret-diagnostics -fcolor-diagnostics -fdiagnostics-format=clang -fdiagnostics-show-option -fdiagnostics-show-category=id -fdiagnostics-fixit-info -fdiagnostics-print-source-range-info -fdiagnostics-parseable-fixits -fno-rounding-math -fexcess-precision=standard     -g -D_DEBUG -fno-fast-math -fstrict-float-cast-overflow    -fmath-errno -fno-unsafe-math-optimizations -ffp-model=precise -ffp-exception-behavior=strict -fprotect-parens                                                                            -fsanitize=address -fsanitize=alignment -fsanitize=bool -fsanitize=builtin -fsanitize=bounds -fsanitize=enum -fsanitize=float-cast-overflow -fsanitize=float-divide-by-zero -fsanitize=function -fsanitize=nonnull-attribute -fsanitize=null -fsanitize=objc-cast                        -fsanitize=pointer-overflow -fsanitize=return -fsanitize=returns-nonnull-attribute -fsanitize=unsigned-shift-base -fsanitize=unreachable -fsanitize=vla-bound -fsanitize=vptr -fsanitize=integer -fsanitize=nullability -std=c++2b -arch arm64 -MD -MT test/CMakeFiles/toygine-tests.dir/core/c_string_view.test.cpp.o -MF test/CMakeFiles/toygine-tests.dir/core/c_string_view.test.cpp.o.d -o test/CMakeFiles/toygine-tests.dir/core/c_string_view.test.cpp.o -c /Users/dmitry/Development/toygine2/test/core/c_string_view.test.cpp
+In file included from /Users/dmitry/Development/toygine2/test/core/c_string_view.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:249:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp:141:25: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+  141 |    constexpr FixedString(size_type count, char character) noexcept;
+      |                          ^~~~~~~~~
+      |                          Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.hpp":{141:25-141:34}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/c_string_view.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:31:51: error: unknown type name 'size_type'; did you mean 'Catch::StringRef::size_type'? [2]
+   31 |  constexpr FixedString<allocatedSize>::FixedString(size_type count, char character) noexcept {
+      |                                                    ^~~~~~~~~
+      |                                                    Catch::StringRef::size_type
+fix-it:"/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl":{31:51-31:60}:"Catch::StringRef::size_type"
+/Users/dmitry/Development/toygine2/out/build/macos-ninja-debug/_deps/catch2-src/src/catch2/../catch2/internal/catch_stringref.hpp:25:15: note: 'Catch::StringRef::size_type' declared here [2]
+   25 |          using size_type = std::size_t;
+      |                ^
+In file included from /Users/dmitry/Development/toygine2/test/core/c_string_view.test.cpp:23:
+In file included from /Users/dmitry/Development/toygine2/test/../include/core.hpp:260:
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:34:3: error: use of undeclared identifier '_storage' [2]
+   34 |    _storage.size = count;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:17: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:37:34: error: use of undeclared identifier '_storage' [2]
+   37 |      std::fill_n(_storage.buffer, _storage.size, character);
+      |                                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:17: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                  ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:39:45: error: use of undeclared identifier '_storage' [2]
+   39 |      std::memset(_storage.buffer, character, _storage.size);
+      |                                              ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:41:3: error: use of undeclared identifier '_storage' [2]
+   41 |    _storage.buffer[_storage.size] = '\0';
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:49:3: error: use of undeclared identifier '_storage' [2]
+   49 |    _storage.size = string.size();
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:27: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:51:60: error: use of undeclared identifier '_storage' [2]
+   51 |    char_traits<char>::move(_storage.buffer, string.c_str(), _storage.size + 1);
+      |                                                             ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:58:3: error: use of undeclared identifier '_storage' [2]
+   58 |    _storage.size = char_traits<char>::length(string);
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                   ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:18: error: use of undeclared identifier '_storage' [2]
+error: expected '>' [3]
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:59:32: note: to match this '<'
+   59 |    assert_message(_storage.size < allocatedSize, "String length must not exceed capacity");
+      |                                 ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:27: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                            ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:61:52: error: use of undeclared identifier '_storage' [2]
+   61 |    char_traits<char>::copy(_storage.buffer, string, _storage.size + 1);
+      |                                                     ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:70:3: error: use of undeclared identifier '_storage' [2]
+   70 |    _storage.size = string._storage.size;
+      |    ^
+/Users/dmitry/Development/toygine2/test/../include/core/fixed_string.inl:71:27: error: use of undeclared identifier '_storage' [2]
+   71 |    char_traits<char>::move(_storage.buffer, string._storage.buffer, _storage.size + 1);
+      |                            ^
+fatal error: too many errors emitted, stopping now [-ferror-limit=]
+20 errors generated.
+ninja: build stopped: subcommand failed.

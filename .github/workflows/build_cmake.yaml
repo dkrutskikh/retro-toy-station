@@ -1,0 +1,333 @@
+name: CMake
+
+on:
+  workflow_call:
+    secrets:
+      SONAR_TOKEN:
+        required: true
+
+permissions: {}
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: Linux Ninja
+            os: ubuntu-24.04
+            run_test: "true"
+            cmake_preset: linux-ninja-release
+
+          - name: macOS XCode
+            os: macos-15
+            run_test: "true"
+            cmake_preset: macos-xcode
+
+          - name: macOS Ninja
+            os: macos-15
+            run_test: "true"
+            cmake_preset: macos-ninja-release
+
+          - name: Windows MSVC
+            os: windows-2025
+            run_test: "true"
+            cmake_preset: windows-msvc
+
+          - name: Windows MSVC x86
+            os: windows-2025
+            run_test: "true"
+            cmake_preset: windows-msvc-x86
+
+          - name: DevkitPro GBA
+            os: ubuntu-latest
+            docker_image: devkitpro/devkitarm:latest
+            run_test: "false"
+            cmake_preset: nintendo-gba-ninja
+
+          - name: DevkitPro NDS
+            os: ubuntu-latest
+            docker_image: devkitpro/devkitarm:latest
+            run_test: "false"
+            cmake_preset: nintendo-ds-ninja
+
+          - name: DevkitPro 3DS
+            os: ubuntu-latest
+            docker_image: devkitpro/devkitarm:latest
+            run_test: "false"
+            cmake_preset: nintendo-3ds-ninja
+
+          - name: DevkitPro Switch
+            os: ubuntu-latest
+            docker_image: devkitpro/devkita64:latest
+            run_test: "false"
+            cmake_preset: nintendo-switch-ninja
+
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.0
+        with:
+          submodules: recursive
+
+      - name: Prepare APT staging dir
+        if: contains(matrix.os, 'ubuntu')
+        run: mkdir -p "$RUNNER_TEMP/apt-cache"
+
+      - name: APT cache restore
+        if: contains(matrix.os, 'ubuntu')
+        id: buildaptcache
+        uses: actions/cache/restore@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: build-${{ matrix.os }}-apt-${{ matrix.cmake_preset }}
+          restore-keys: |
+            build-${{ matrix.os }}-apt-${{ matrix.cmake_preset }}
+
+      - name: Prepare CI
+        run: |
+          if [[ "${{ matrix.os }}" =~ "windows" ]]; then
+            MSVC_INSTALL_PATH=$(vswhere -latest -property installationPath)
+            echo "MSVC_INSTALL_PATH = $MSVC_INSTALL_PATH"
+
+            echo "Installed toolset versions:"
+            ls -vr "$MSVC_INSTALL_PATH/VC/Tools/MSVC"
+
+            TOOLS_DIR=$(ls -vr "$MSVC_INSTALL_PATH/VC/Tools/MSVC/" | head -1)
+            echo "TOOLS_DIR = $TOOLS_DIR"
+
+            DUMPBIN_PATH="$MSVC_INSTALL_PATH/VC/Tools/MSVC/$TOOLS_DIR/bin/Hostx64/x64/dumpbin.exe"
+            echo "DUMPBIN_PATH = $DUMPBIN_PATH"
+          elif [[ "${{ matrix.os }}" =~ "macos" ]]; then
+            # Prefer the desired version if it exists, otherwise keep the default.
+            if [ -d "/Applications/Xcode_26.0.app" ]; then
+              sudo xcode-select -s /Applications/Xcode_26.0.app
+            fi
+          elif [[ "${{ matrix.os }}" =~ "ubuntu" ]]; then
+            set -euo pipefail
+            export DEBIAN_FRONTEND=noninteractive
+
+            APT_CACHE="${APT_CACHE:-${RUNNER_TEMP:-/tmp}/apt-cache}"
+            sudo mkdir -p "$APT_CACHE"
+
+            sudo apt -yq -o Acquire::Retries=3 update
+            sudo apt -yq install eatmydata
+
+            sudo eatmydata apt -yq --no-install-recommends \
+              -o Dir::Cache::archives="$APT_CACHE" \
+              -o APT::Keep-Downloaded-Packages=true \
+              -o Acquire::Retries=3 -o Dpkg::Use-Pty=0 \
+              install \
+              gcc-14 g++-14
+
+            sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100
+            sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
+
+            sudo rm -f  "$APT_CACHE/lock" || true
+            sudo rm -rf "$APT_CACHE/partial" || true
+            sudo chown -R "$USER:$USER" "$APT_CACHE"
+          fi
+
+      - name: APT cache save
+        if: contains(matrix.os, 'ubuntu') && steps.buildaptcache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: ${{ steps.buildaptcache.outputs.cache-primary-key }}
+
+      - name: Setup MSVC developer command prompt
+        if: ${{ contains(matrix.cmake_preset, 'msvc') }}
+        uses: TheMrMilchmann/setup-msvc-dev@v4.0.0
+        with:
+          arch: ${{ contains(matrix.cmake_preset, 'x86') && 'x86' || 'x64' }}
+
+      - name: Build and Test
+        if: ${{ matrix.docker_image == '' }}
+        run: |
+          cmake -DTOYGINE_BUILD_TESTS=$([ "${{ matrix.run_test }}" = "true" ] && echo ON || echo OFF) --preset ${{ matrix.cmake_preset }}
+          cmake --build --preset ${{ matrix.cmake_preset }}
+          if [ "${{ matrix.run_test }}" = "true" ]; then
+            ctest --preset ${{ matrix.cmake_preset }}
+          fi
+
+      - name: Build and Test in Docker
+        if: ${{ matrix.docker_image != '' }}
+        uses: addnab/docker-run-action@v3
+        with:
+          image: ${{ matrix.docker_image }}
+          options: |
+            -v ${{ github.workspace }}:/workspace
+          run: |
+            cd /workspace
+            cmake -DTOYGINE_BUILD_TESTS=$([ "${{ matrix.run_test }}" = "true" ] && echo ON || echo OFF) --preset ${{ matrix.cmake_preset }}
+            cmake --build --preset ${{ matrix.cmake_preset }}
+
+  unit-test:
+    name: Collect unit tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.0
+        with:
+          submodules: recursive
+
+      - name: Prepare APT staging dir
+        run: mkdir -p "$RUNNER_TEMP/apt-cache"
+
+      - name: APT cache restore
+        id: unittestaptcache
+        uses: actions/cache/restore@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: unit-test-apt
+          restore-keys: |
+            unit-test-apt
+
+      - name: Prepare CI
+        run: |
+          set -euo pipefail
+          export DEBIAN_FRONTEND=noninteractive
+
+          APT_CACHE="${APT_CACHE:-${RUNNER_TEMP:-/tmp}/apt-cache}"
+          sudo mkdir -p "$APT_CACHE"
+
+          sudo apt -yq -o Acquire::Retries=3 update
+          sudo apt -yq install eatmydata
+
+          sudo eatmydata apt -yq --no-install-recommends \
+            -o Dir::Cache::archives="$APT_CACHE" \
+            -o APT::Keep-Downloaded-Packages=true \
+            -o Acquire::Retries=3 -o Dpkg::Use-Pty=0 \
+            install \
+            lcov
+
+          sudo rm -f  "$APT_CACHE/lock" || true
+          sudo rm -rf "$APT_CACHE/partial" || true
+          sudo chown -R "$USER:$USER" "$APT_CACHE"
+
+      - name: APT cache save
+        if: steps.unittestaptcache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: ${{ steps.unittestaptcache.outputs.cache-primary-key }}
+
+      - name: Configure
+        run: |
+          cmake -DTOYGINE_BUILD_TESTS=ON -DTOYGINE_TESTS_ENABLE_COVERAGE=ON --preset linux-ninja-debug
+
+      - name: Collect JUnit
+        run: |
+          cmake --build --preset linux-ninja-debug
+          ctest --preset linux-ninja-debug
+
+      - name: Upload JUnit report to Codecov
+        uses: codecov/test-results-action@v1.1.1
+        with:
+          files: out/junit/linux-ninja-debug.xml
+          flags: units
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Collect coverage
+        run: |
+          cmake --build --preset linux-ninja-debug --target unit_tests_coverage
+
+      - name: Upload coverage report to Codecov
+        uses: codecov/codecov-action@v5.5.1
+        with:
+          disable_search: true
+          files: out/build/linux-ninja-debug/unit_tests_coverage.info
+          flags: units
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  sonar-cloud:
+    name: SonarCloud Analyzer
+    # This job should be run only for the original repo (either pushes or pull requests originating from the same repo), forks are not allowed.
+    # Workflows initiated by Dependabot do not have access to repo secrets, so this job should not be run in this case.
+    if: >-
+      ${{
+          github.repository == 'ToymanInteractive/toygine2'
+          && ( github.event_name == 'push' || ( github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository ) )
+          && github.actor != 'dependabot[bot]'
+       }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.0
+        with:
+          # Disabling shallow clones is recommended for improving the relevancy of reporting
+          fetch-depth: 0
+          submodules: recursive
+
+      - name: Prepare APT staging dir
+        run: mkdir -p "$RUNNER_TEMP/apt-cache"
+
+      - name: APT cache restore
+        id: sonarcloudaptcache
+        uses: actions/cache/restore@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: sonar-cloud-apt
+          restore-keys: |
+            sonar-cloud-apt
+
+      - name: Prepare CI
+        run: |
+          set -euo pipefail
+          export DEBIAN_FRONTEND=noninteractive
+
+          APT_CACHE="${APT_CACHE:-${RUNNER_TEMP:-/tmp}/apt-cache}"
+          sudo mkdir -p "$APT_CACHE"
+
+          sudo apt -yq -o Acquire::Retries=3 update
+          sudo apt -yq install eatmydata
+
+          sudo eatmydata apt -yq --no-install-recommends \
+            -o Dir::Cache::archives="$APT_CACHE" \
+            -o APT::Keep-Downloaded-Packages=true \
+            -o Acquire::Retries=3 -o Dpkg::Use-Pty=0 \
+            install \
+            gcc-14 g++-14
+
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-14 100
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-14 100
+
+          sudo rm -f  "$APT_CACHE/lock" || true
+          sudo rm -rf "$APT_CACHE/partial" || true
+          sudo chown -R "$USER:$USER" "$APT_CACHE"
+
+      - name: APT cache save
+        if: steps.sonarcloudaptcache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4.3.0
+        with:
+          path: ${{ runner.temp }}/apt-cache
+          key: ${{ steps.sonarcloudaptcache.outputs.cache-primary-key }}
+
+      - name: Prepare compile_commands.json
+        run: |
+          cmake -DTOYGINE_BUILD_TESTS=ON --preset linux-ninja-debug
+
+      - uses: SonarSource/sonarqube-scan-action@v6.0.0
+        with:
+          args: >-
+            -Dsonar.cfamily.compile-commands=out/build/linux-ninja-debug/compile_commands.json
+            -Dsonar.cfamily.analysisCache.mode=fs
+            -Dsonar.cfamily.analysisCache.path=.sonar-cfamily-cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: https://sonarcloud.io

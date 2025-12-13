@@ -1,0 +1,264 @@
+//
+// Copyright (c) 2025 Toyman Interactive
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy of this
+// software and associated documentation files (the "Software"), to deal in the Software
+// without restriction, including without limitation the rights to use, copy, modify, merge,
+// publish, distribute, sublicense, and / or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the following conditions :
+//
+// The above copyright notice and this permission notice shall be included in all copies or
+// substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+// INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR
+// PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+// FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+// DEALINGS IN THE SOFTWARE.
+//
+/*!
+  \file   core.hpp
+  \brief  Umbrella header for the engine core module
+*/
+
+#ifndef INCLUDE_CORE_HPP_
+#define INCLUDE_CORE_HPP_
+
+#include <algorithm>
+#include <array>
+#include <compare>
+#include <concepts>
+#include <cstddef>
+#include <cstdint>
+#include <cstring>
+#include <cuchar>
+#include <initializer_list>
+#include <iterator>
+#include <memory>
+#include <stdexcept>
+#include <string>
+#include <type_traits>
+#include <utility>
+
+//----------------------------------------------------------------------------------------------------------------------
+
+//==============================
+//  Target OS
+//==============================
+
+/// Microsoft Windows Desktop xp, vista, 7, 8, 8.1 etc...
+#define OS_WINDOWS 0x1000
+
+/// GNU Linux
+#define OS_LINUX 0x2000
+
+/// Apple macOS
+#define OS_MAC_OS 0x3000
+
+/// Apple iOS
+#define OS_IOS 0x3100
+
+/// Google Android
+#define OS_ANDROID 0x4000
+
+/// Nintendo GameBoy Advance
+#define OS_GBA 0x5000
+
+/// Nintendo DS
+#define OS_NDS 0x6000
+
+/// Nintendo 3DS
+#define OS_3DS 0x7000
+
+/// Nintendo Switch
+#define OS_SWITCH 0x8000
+
+//==============================
+//  ProcessorType
+//==============================
+
+/// Intel CPU 32 bit code
+#define CPU_INTEL_x86 0x1020
+
+/// Intel CPU 64 bit code
+#define CPU_INTEL_x64 0x1040
+
+/// ARM CPU 32 bit code
+#define CPU_ARM_32 0x2020
+
+/// ARM CPU 64 bit code
+#define CPU_ARM_64 0x2040
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#undef TARGET_OS
+#undef TARGET_CPU
+
+#include "@TOYGINE_TARGET_PLATFORM_CONFIG_HEADER@"
+
+/// @namespace toy
+/// @brief Root namespace containing all engine modules.
+namespace toy {
+
+using std::size_t;
+
+using std::int16_t;
+using std::int32_t;
+using std::int64_t;
+using std::int8_t;
+using std::uint16_t;
+using std::uint32_t;
+using std::uint64_t;
+using std::uint8_t;
+
+using std::char_traits;
+
+using std::strong_ordering;
+
+/*!
+  \brief Returns the size of an array at compile-time.
+
+  This is a compile-time helper function that returns the size of an array. The size of the array is inferred from the
+  parameter type, which is a reference to an array of length N.
+*/
+template <typename T, size_t N>
+constexpr size_t ArraySize(T (&)[N]) {
+  return N;
+}
+
+/*!
+  \brief Concept defining the requirements for string-like types.
+
+  This concept defines the interface that any type must satisfy to be considered string-like. It requires the type to
+  have a size() method that returns a value convertible to size_t, and a c_str() method that returns a value convertible
+  to const char*.
+
+  (Template parameter T is the type to check for string-like properties.)
+
+  \note Types satisfying this concept can be used with FixedString template methods that accept generic string types,
+        such as constructors, assignment operators, and various string manipulation methods.
+
+  \note The concept ensures type safety and provides a compile-time guarantee that the required methods exist and return
+        compatible types.
+*/
+template <typename T>
+concept StringLike = requires(const T & str) {
+  { str.size() } -> std::same_as<size_t>;
+  { str.c_str() } -> std::convertible_to<const char *>;
+};
+
+#if 1
+/*!
+  \def TOY_UNUSED(identifier)
+  \brief Suppresses compiler warnings about unused variables or functions.
+
+  This macro is used to ignore identifiers that are not used in the code, but are still declared for some reason.
+
+  \param identifier The identifier to ignore.
+
+  \note This macro does not change the behavior of the program.
+  \note This macro is used to suppress compiler warnings about unused variables or functions.
+*/
+#define TOY_UNUSED(identifier)
+#else
+#define TOY_UNUSED(identifier) identifier
+#endif
+
+//--------------------------------------------------------------------------------------------------------------------
+
+/// @brief Assertion utilities for validating engine invariants and runtime conditions.
+namespace assertion {
+
+using AssertionCallback = bool (*)(const char *);
+using StackWalkCallback = void (*)(const char *);
+
+/*!
+  \brief Initializes the assertion system.
+
+  \sa deInitialize()
+*/
+void initialize();
+
+/*!
+  \brief Shutdown the assertion system.
+
+  \sa initialize()
+*/
+void deInitialize();
+
+/*!
+  \brief Sets the assertion and stack walk callbacks.
+
+  The assertion callback is called when an assertion is triggered. The callback is passed the assertion string and
+  should return true if the assertion should be ignored, false otherwise.
+
+  The stack walk callback is called to print the stack trace. The callback is passed the constructed string.
+
+  \param assertionCallback The assertion callback.
+  \param stackWalkCallback The stack walk callback.
+*/
+void setCallbacks(AssertionCallback assertionCallback, StackWalkCallback stackWalkCallback);
+
+#ifdef _DEBUG
+
+void assertion(const char * code, const char * message, const char * fileName, const char * functionName,
+               size_t lineNumber);
+
+#else // _DEBUG
+
+inline void assertion(const char * TOY_UNUSED(code), const char * TOY_UNUSED(message),
+                      const char * TOY_UNUSED(fileName), const char * TOY_UNUSED(functionName),
+                      size_t TOY_UNUSED(lineNumber)) {}
+
+#endif // _DEBUG
+
+/*!
+  \brief Compile-time assertion function for constexpr contexts.
+
+  This function provides assertion capabilities in constexpr contexts where regular assertions cannot be used. When the
+  \a condition is false, it throws a std::invalid_argument exception with the provided \a message.
+
+  \param condition The condition to check. Must be true for the assertion to pass.
+  \param message   The error message to include in the exception if the assertion fails.
+
+  \throws std::invalid_argument If \a condition is false, with \a message as the error description.
+
+  \note This function is designed for use in constexpr contexts where traditional assertions are not available. It
+        should be used sparingly and only when compile-time validation is essential.
+
+  \note Unlike regular assertions, this function always throws an exception in both debug and release builds when the
+        condition fails.
+
+  \see assert
+  \see assert_message
+*/
+constexpr void constexpr_assert(bool condition, const char * message) {
+  if (!condition)
+    throw std::invalid_argument(message);
+}
+
+} // namespace assertion
+
+} // namespace toy
+
+#include "core/base_string.hpp"
+#include "core/c_string_view.hpp"
+#include "core/callbacks_pool.hpp"
+#include "core/constexpr_utils.hpp"
+#include "core/fixed_string.hpp"
+#include "core/fixed_vector.hpp"
+#include "core/hashes.hpp"
+#include "core/utils.hpp"
+
+//----------------------------------------------------------------------------------------------------------------------
+
+#include "core/base_string.inl"
+#include "core/c_string_view.inl"
+#include "core/callbacks_pool.inl"
+#include "core/constexpr_utils.inl"
+#include "core/fixed_string.inl"
+#include "core/fixed_vector.inl"
+#include "core/utils.inl"
+
+#endif // INCLUDE_CORE_HPP_
