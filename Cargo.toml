@@ -1,0 +1,8 @@
+[package]
+name = "retro-toy-station"
+version = "0.0.1"
+edition = "2021"
+
+[[bin]]
+name = "retro-toy-station"
+path = "src/main.rs"
