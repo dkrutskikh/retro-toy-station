@@ -15,4 +15,4 @@ name = "retro-toy-station"
 path = "src/main.rs"
 
 [dependencies]
-eframe = "0.33.3"
+eframe = { version = "0.33.3", features = ["persistence"] }
