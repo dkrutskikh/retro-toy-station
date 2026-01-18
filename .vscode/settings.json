@@ -35,5 +35,9 @@
     },
     "workbench.editorAssociations": {
         "*.md": "vscode.markdown.preview.editor"
-    }
+    },
+    "cSpell.words": [
+        "eframe",
+        "egui"
+    ]
 }
