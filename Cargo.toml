@@ -1,8 +1,18 @@
 [package]
 name = "retro-toy-station"
 version = "0.0.1"
-edition = "2021"
+edition = "2024"
+rust-version = "1.92"
+description = "Open-source desktop ROM manager for clean, verified retro game collections"
+readme = "README.md"
+repository = "https://github.com/dkrutskikh/retro-toy-station"
+license = "MIT"
+license-file = "LICENSE"
+keywords = ["rom-manager", "retro-gaming", "cross-platform"]
 
 [[bin]]
 name = "retro-toy-station"
 path = "src/main.rs"
+
+[dependencies]
+eframe = "0.33.3"
